@@ -1,6 +1,8 @@
 import React, { useCallback } from 'react';
 import { Handle, Position } from '@xyflow/react';
 import { PreProcessNodeProps } from '../model/types';
+import './PreProcess.css'
+
 
 const PreProcess: React.FC<PreProcessNodeProps> = ({ data, isConnectable }) => {
     const onChange = useCallback((evt: React.ChangeEvent<HTMLInputElement>) => {

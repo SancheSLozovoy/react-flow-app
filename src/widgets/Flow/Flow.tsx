@@ -1,4 +1,4 @@
-import React, { useCallback, useState } from 'react';
+import { useCallback, useState } from 'react';
 import {
     ReactFlow,
     MiniMap,
@@ -62,7 +62,7 @@ export default function App() {
                 <Panel position="top-right">
                     <button onClick={handleAddProcess}>Add Process</button>
                     <button onClick={handleAddPreProcess}>Add PreProcess1</button>
-                    <button>Add PreProcess2</button>
+                    <button onClick={handleAddPreProcess}>Add PreProcess2</button>
                 </Panel>
             </ReactFlow>
         </div>

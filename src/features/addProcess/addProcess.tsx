@@ -5,7 +5,7 @@ export const addProcess = (nodes: Node[], setNodes: (nodes: Node[]) => void, nod
         id: `process-${nodeId}`,
         type: 'textUpdater', 
         position: { x: Math.random() * 400, y: Math.random() * 400 }, 
-        data: { text: `Process ${nodeId}` },
+        data: { value: {} },
     };
 
     setNodes([...nodes, newNode]);
