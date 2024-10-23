@@ -16,7 +16,7 @@ const Process: React.FC<ProcessNodeProps> = ({ data, isConnectable }) => {
   return (
     <div className="text-updater-node">
       <div style={{ display: 'flex', flexDirection: 'column' }}>
-        <label htmlFor="text"></label>
+      <label htmlFor="text">Label</label>
         <input
           id="text"
           name="text"
@@ -24,6 +24,7 @@ const Process: React.FC<ProcessNodeProps> = ({ data, isConnectable }) => {
           className="nodrag"
           value={data.text}
         />
+        <label htmlFor="text">Label</label>
         <input
           id="text"
           name="text"

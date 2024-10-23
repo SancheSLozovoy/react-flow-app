@@ -1,6 +1,6 @@
 import { Node } from '@xyflow/react';
 
-export const addProcess = (nodes: Node[], setNodes: (nodes: Node[]) => void, nodeId: number) => {
+export const addPreProcess = (nodes: Node[], setNodes: (nodes: Node[]) => void, nodeId: number) => {
     const newNode: Node = {
         id: `node-${nodeId}`,
         type: 'textUpdater',
