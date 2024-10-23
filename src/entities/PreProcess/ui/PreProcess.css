@@ -3,3 +3,13 @@
     border-radius: 5px;
     padding: 10px;
 }
+
+.label{
+    color: #ccc;
+    font-size: 12px;
+}
+
+.text-updeter-inner{
+    display: flex;
+    flex-direction: column;
+}
