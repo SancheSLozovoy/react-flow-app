@@ -14,16 +14,16 @@ import {
 } from '@xyflow/react';
 import '@xyflow/react/dist/style.css';
 import { addProcess } from '../../features/addProcess/addProcess';
-import Process from '../../entities/Process/Process';
-import PreProcess from '../../entities/PreProcess/PreProcess';
+import Process from '../../entities/Process/ui/Process';
+import PreProcess from '../../entities/PreProcess/ui/PreProcess';
 import { addPreProcess } from '../../features/addPreProcess/addPreProcess';
 
 const initialNodes: Node[] = [];
 const initialEdges: Edge[] = [];
-const nodeTypes = { 
+const nodeTypes = {
     textUpdater: Process,
-    preProcessUpdater: PreProcess, 
- };
+    preProcessUpdater: PreProcess,
+};
 
 export default function App() {
     const [nodes, setNodes, onNodesChange] = useNodesState(initialNodes);

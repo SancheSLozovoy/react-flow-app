@@ -1,12 +1,6 @@
 import React, { useCallback } from 'react';
 import { Handle, Position } from '@xyflow/react';
-
-interface PreProcessNodeProps {
-    data: {
-        text: string;
-    };
-    isConnectable: boolean;
-}
+import { PreProcessNodeProps } from '../model/types';
 
 const PreProcess: React.FC<PreProcessNodeProps> = ({ data, isConnectable }) => {
     const onChange = useCallback((evt: React.ChangeEvent<HTMLInputElement>) => {
@@ -15,6 +9,7 @@ const PreProcess: React.FC<PreProcessNodeProps> = ({ data, isConnectable }) => {
 
     return (
         <div className="text-updater-node">
+            <Handle type="target" position={Position.Top} isConnectable={isConnectable} />
             <div style={{ display: 'flex', flexDirection: 'column' }}>
                 <label htmlFor="text">Label</label>
                 <input
@@ -41,12 +36,6 @@ const PreProcess: React.FC<PreProcessNodeProps> = ({ data, isConnectable }) => {
                     value={data.text}
                 />
             </div>
-            <Handle
-                type="source"
-                position={Position.Bottom}
-                id="a"
-                isConnectable={isConnectable}
-            />
         </div>
     );
 };

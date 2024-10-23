@@ -1,12 +1,6 @@
 import React, { useCallback } from 'react';
 import { Handle, Position } from '@xyflow/react';
-
-interface ProcessNodeProps {
-  data: {
-    text: string;
-  };
-  isConnectable: boolean;
-}
+import { ProcessNodeProps } from '../model/types';
 
 const Process: React.FC<ProcessNodeProps> = ({ data, isConnectable }) => {
   const onChange = useCallback((evt: React.ChangeEvent<HTMLInputElement>) => {
@@ -33,12 +27,7 @@ const Process: React.FC<ProcessNodeProps> = ({ data, isConnectable }) => {
           value={data.text}
         />
       </div>
-      <Handle
-        type="source"
-        position={Position.Bottom}
-        id="a"
-        isConnectable={isConnectable}
-      />
+       <Handle type="source" position={Position.Bottom} isConnectable={isConnectable} />
     </div>
   );
 };
