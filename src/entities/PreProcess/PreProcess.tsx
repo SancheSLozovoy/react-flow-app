@@ -1,14 +1,14 @@
 import React, { useCallback } from 'react';
 import { Handle, Position } from '@xyflow/react';
 
-interface ProcessNodeProps {
+interface PreProcessNodeProps {
     data: {
         text: string;
     };
     isConnectable: boolean;
 }
 
-const Process: React.FC<ProcessNodeProps> = ({ data, isConnectable }) => {
+const PreProcess: React.FC<PreProcessNodeProps> = ({ data, isConnectable }) => {
     const onChange = useCallback((evt: React.ChangeEvent<HTMLInputElement>) => {
         console.log(evt.target.value);
     }, []);
@@ -51,4 +51,4 @@ const Process: React.FC<ProcessNodeProps> = ({ data, isConnectable }) => {
     );
 };
 
-export default Process;
+export default PreProcess;

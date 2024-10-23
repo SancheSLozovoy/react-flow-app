@@ -14,11 +14,16 @@ import {
 } from '@xyflow/react';
 import '@xyflow/react/dist/style.css';
 import { addProcess } from '../../features/addProcess/addProcess';
-import TextUpdaterNode from '../../entities/Process/Process';
+import Process from '../../entities/Process/Process';
+import PreProcess from '../../entities/PreProcess/PreProcess';
+import { addPreProcess } from '../../features/addPreProcess/addPreProcess';
 
 const initialNodes: Node[] = [];
 const initialEdges: Edge[] = [];
-const nodeTypes = { textUpdater: TextUpdaterNode };
+const nodeTypes = { 
+    textUpdater: Process,
+    preProcessUpdater: PreProcess, 
+ };
 
 export default function App() {
     const [nodes, setNodes, onNodesChange] = useNodesState(initialNodes);
@@ -35,7 +40,10 @@ export default function App() {
         setNodeId(nodeId + 1);
     };
 
-
+    const handleAddPreProcess = () => {
+        addPreProcess(nodes, setNodes, nodeId);
+        setNodeId(nodeId + 1)
+    }
 
     return (
         <div style={{ width: '100vw', height: '100vh' }}>
@@ -53,7 +61,7 @@ export default function App() {
                 <Background gap={12} size={1} />
                 <Panel position="top-right">
                     <button onClick={handleAddProcess}>Add Process</button>
-                    <button>Add PreProcess1</button>
+                    <button onClick={handleAddPreProcess}>Add PreProcess1</button>
                     <button>Add PreProcess2</button>
                 </Panel>
             </ReactFlow>
