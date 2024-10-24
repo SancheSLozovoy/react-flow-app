@@ -6,7 +6,6 @@ import './PreProcess.css'
 
 const PreProcess: React.FC<PreProcessNodeProps> = ({ data, isConnectable }) => {
     const onChange = useCallback((evt: React.ChangeEvent<HTMLInputElement>) => {
-        console.log(evt.target.value);
     }, []);
 
     return (
