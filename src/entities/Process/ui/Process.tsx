@@ -64,7 +64,7 @@ const Process: React.FC<ProcessNodeProps> = ({ data, id, isConnectable }) => {
           onChange={(e) => setInput2Value(e.target.value)}
         />
       </div>
-      <Handle type="source" position={Position.Bottom} isConnectable={isConnectable} />
+      <Handle className='handle' type="source" position={Position.Bottom} isConnectable={isConnectable} />
     </div>
   );
 };

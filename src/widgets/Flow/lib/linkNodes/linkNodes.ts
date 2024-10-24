@@ -19,6 +19,6 @@ export const linkNodes = (nodes: Node[], edges: Edge[]) => {
             preProcesses: connectedPreProcesses.filter(item => item !== null),
         };
     });
-
+    console.log(groupedData)
     return groupedData;
 };

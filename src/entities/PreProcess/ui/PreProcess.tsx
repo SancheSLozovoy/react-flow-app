@@ -40,7 +40,7 @@ const PreProcess: React.FC<PreProcessNodeProps> = ({ data, id, isConnectable }) 
 
     return (
         <div className="text-updater-node">
-            <Handle type="target" position={Position.Top} isConnectable={isConnectable} />
+            <Handle type="target" position={Position.Top} isConnectable={isConnectable} className="handle target" />
             <div className='text-updeter-inner'>
                 <label
                     ref={labelRef1}
@@ -91,7 +91,7 @@ const PreProcess: React.FC<PreProcessNodeProps> = ({ data, id, isConnectable }) 
                     className="nodrag"
                 />
             </div>
-            <Handle type="source" position={Position.Bottom} isConnectable={isConnectable} />
+            
         </div>
     );
 };

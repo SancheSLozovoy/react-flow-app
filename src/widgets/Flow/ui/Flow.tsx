@@ -19,6 +19,7 @@ import PreProcess from '../../../entities/PreProcess/ui/PreProcess';
 import { addPreProcess } from '../../../features/addPreProcess/addPreProcess';
 import { linkNodes } from '../lib/linkNodes/linkNodes';
 import { sendPostRequest } from '../api/apiService/apiService';
+import './Flow.css';
 
 const initialNodes: Node[] = [];
 const initialEdges: Edge[] = [];
@@ -51,7 +52,6 @@ export default function Flow() {
         setNodeId(nodeId + 1);
     };
 
-
     const handleSend = async () => {
         const linkedData = linkNodes(nodes, edges);
         await sendPostRequest(linkedData);
@@ -69,15 +69,15 @@ export default function Flow() {
                 nodeTypes={nodeTypes}
             >
                 <Controls />
-                <MiniMap />
                 <Background gap={12} size={1} />
-                <Panel position="top-right">
-                    <button onClick={handleAddProcess}>Add Process</button>
-                    <button onClick={handleAddPreProcess}>Add PreProcess1</button>
-                    <button onClick={handleAddPreProcess}>Add PreProcess2</button>
+                <MiniMap />
+                <Panel position="top-right" className="panel">
+                    <button className="button" onClick={handleAddProcess}>Добавить процесс</button>
+                    <button className="button" onClick={handleAddPreProcess}>Добавить PreProcess 1</button>
+                    <button className="button" onClick={handleAddPreProcess}>Добавить PreProcess 2</button>
                 </Panel>
-                <Panel position='bottom-right'>
-                    <button onClick={handleSend}>Отправить</button>
+                <Panel position='bottom-right' className="panel">
+                    <button className="button" onClick={handleSend}>Отправить</button>
                 </Panel>
             </ReactFlow>
         </div>
