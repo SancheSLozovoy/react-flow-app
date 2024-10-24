@@ -11,8 +11,8 @@ const Process: React.FC<ProcessNodeProps> = ({ data, id, isConnectable }) => {
 
   const [input1Value, setInput1Value] = useState(data.input1Value || '');
   const [input2Value, setInput2Value] = useState(data.input2Value || '');
-  const [label1Value, setLabel1Value] = useState(data.label1Value);
-  const [label2Value, setLabel2Value] = useState(data.label2Value);
+  const [label1Value, setLabel1Value] = useState(data.label1Value || 'Change');
+  const [label2Value, setLabel2Value] = useState(data.label2Value || 'Change');
 
   useEffect(() => {
     data.updateNodeData(id, {
@@ -26,9 +26,9 @@ const Process: React.FC<ProcessNodeProps> = ({ data, id, isConnectable }) => {
   useEffect(() => {
     setInput1Value(data.input1Value || '');
     setInput2Value(data.input2Value || '');
-    setLabel1Value(data.label1Value || '');
-    setLabel2Value(data.label2Value || '');
-  }, []);
+    setLabel1Value(data.label1Value || 'Change');
+    setLabel2Value(data.label2Value || 'Change');
+  }, [data]);
 
   return (
     <div className="text-updater-node">
@@ -38,7 +38,7 @@ const Process: React.FC<ProcessNodeProps> = ({ data, id, isConnectable }) => {
           ref={labelRef1}
           contentEditable="true"
           suppressContentEditableWarning={true}
-          onInput={() => setLabel1Value(labelRef1.current?.textContent || '')}
+          onBlur={() => setLabel1Value(labelRef1.current?.textContent || 'Change')}
         >
           {label1Value}
         </label>
@@ -53,7 +53,7 @@ const Process: React.FC<ProcessNodeProps> = ({ data, id, isConnectable }) => {
           ref={labelRef2}
           contentEditable="true"
           suppressContentEditableWarning={true}
-          onInput={() => setLabel2Value(labelRef2.current?.textContent || '')}
+          onBlur={() => setLabel2Value(labelRef2.current?.textContent || 'Change')}
         >
           {label2Value}
         </label>

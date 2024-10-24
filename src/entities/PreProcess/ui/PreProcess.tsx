@@ -14,9 +14,9 @@ const PreProcess: React.FC<PreProcessNodeProps> = ({ data, id, isConnectable }) 
     const [input1Value, setInput1Value] = useState(data.input1Value || '');
     const [input2Value, setInput2Value] = useState(data.input2Value || '');
     const [input3Value, setInput3Value] = useState(data.input3Value || '');
-    const [label1Value, setLabel1Value] = useState(data.label1Value);
-    const [label2Value, setLabel2Value] = useState(data.label2Value);
-    const [label3Value, setLabel3Value] = useState(data.label3Value);
+    const [label1Value, setLabel1Value] = useState(data.label1Value || 'Change');
+    const [label2Value, setLabel2Value] = useState(data.label2Value || 'Change');
+    const [label3Value, setLabel3Value] = useState(data.label3Value || 'Change');
 
     useEffect(() => {
         data.updateNodeData(id, {
@@ -33,9 +33,9 @@ const PreProcess: React.FC<PreProcessNodeProps> = ({ data, id, isConnectable }) 
         setInput1Value(data.input1Value || '');
         setInput2Value(data.input2Value || '');
         setInput3Value(data.input3Value || '');
-        setLabel1Value(data.label1Value);
-        setLabel2Value(data.label2Value);
-        setLabel3Value(data.label3Value);
+        setLabel1Value(data.label1Value || 'Change');
+        setLabel2Value(data.label2Value || 'Change');
+        setLabel3Value(data.label3Value || 'Change');
     }, [data]);
 
     return (
@@ -47,7 +47,7 @@ const PreProcess: React.FC<PreProcessNodeProps> = ({ data, id, isConnectable }) 
                     className='label'
                     contentEditable="true"
                     suppressContentEditableWarning={true}
-                    onInput={() => setLabel1Value(labelRef1.current?.textContent || '')}
+                    onBlur={() => setLabel1Value(labelRef1.current?.textContent || 'Change')}
                 >
                     {label1Value}
                 </label>
@@ -63,7 +63,7 @@ const PreProcess: React.FC<PreProcessNodeProps> = ({ data, id, isConnectable }) 
                     className='label'
                     contentEditable="true"
                     suppressContentEditableWarning={true}
-                    onInput={() => setLabel2Value(labelRef2.current?.textContent || '')}
+                    onBlur={() => setLabel2Value(labelRef2.current?.textContent || 'Change')}
                 >
                     {label2Value}
                 </label>
@@ -79,7 +79,7 @@ const PreProcess: React.FC<PreProcessNodeProps> = ({ data, id, isConnectable }) 
                     className='label'
                     contentEditable="true"
                     suppressContentEditableWarning={true}
-                    onInput={() => setLabel3Value(labelRef3.current?.textContent || '')}
+                    onBlur={() => setLabel3Value(labelRef3.current?.textContent || 'Change')}
                 >
                     {label3Value}
                 </label>
@@ -91,7 +91,6 @@ const PreProcess: React.FC<PreProcessNodeProps> = ({ data, id, isConnectable }) 
                     className="nodrag"
                 />
             </div>
-            
         </div>
     );
 };
