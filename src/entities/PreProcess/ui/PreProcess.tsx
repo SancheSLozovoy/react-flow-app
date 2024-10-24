@@ -12,21 +12,21 @@ const PreProcess: React.FC<PreProcessNodeProps> = ({ data, isConnectable }) => {
         <div className="text-updater-node">
             <Handle type="target" position={Position.Top} isConnectable={isConnectable} />
             <div className='text-updeter-inner'>
-                <label  className='label' contentEditable='true'>Change label</label>
+                <label className='label' suppressContentEditableWarning={true}>Change label</label>
                 <input
                     name="text"
                     onChange={onChange}
                     className="nodrag"
                     value={data.text}
                 />
-                <label  className='label' contentEditable='true'>Change label</label>
+                <label className='label' suppressContentEditableWarning={true}>Change label</label>
                 <input
                     name="text"
                     onChange={onChange}
                     className="nodrag"
                     value={data.text}
                 />
-                <label className='label' contentEditable='true'>Change label</label>
+                <label className='label' suppressContentEditableWarning={true}>Change label</label>
                 <input
                     name="text"
                     onChange={onChange}
