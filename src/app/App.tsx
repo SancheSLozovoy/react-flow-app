@@ -1,4 +1,4 @@
-import Flow from '../widgets/Flow/Flow';
+import Flow from '../widgets/Flow/ui/Flow';
 
 
 export default function App() {
