@@ -11,8 +11,8 @@ const Process: React.FC<ProcessNodeProps> = ({ data, id, isConnectable }) => {
 
   const [input1Value, setInput1Value] = useState(data.input1Value || '');
   const [input2Value, setInput2Value] = useState(data.input2Value || '');
-  const [label1Value, setLabel1Value] = useState(data.label1Value || '');
-  const [label2Value, setLabel2Value] = useState(data.label2Value || '');
+  const [label1Value, setLabel1Value] = useState(data.label1Value);
+  const [label2Value, setLabel2Value] = useState(data.label2Value);
 
   useEffect(() => {
     data.updateNodeData(id, {
@@ -40,7 +40,7 @@ const Process: React.FC<ProcessNodeProps> = ({ data, id, isConnectable }) => {
           suppressContentEditableWarning={true}
           onInput={() => setLabel1Value(labelRef1.current?.textContent || '')}
         >
-          {label1Value || 'Change label'}
+          {label1Value}
         </label>
         <input
           ref={inputRef1}
@@ -55,7 +55,7 @@ const Process: React.FC<ProcessNodeProps> = ({ data, id, isConnectable }) => {
           suppressContentEditableWarning={true}
           onInput={() => setLabel2Value(labelRef2.current?.textContent || '')}
         >
-          {label2Value || 'Change label'}
+          {label2Value}
         </label>
         <input
           ref={inputRef2}

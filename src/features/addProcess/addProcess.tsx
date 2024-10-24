@@ -8,11 +8,10 @@ export const addProcess = (
   initialData: { label1Value?: string; label2Value?: string; input1Value?: string; input2Value?: string } = {}
 ) => {
   const newNode: Node = {
-    id: `process-${nodeId}`,
+    id: `${nodeId}`,
     type: 'textUpdater', 
     position: { x: Math.random() * 400, y: Math.random() * 400 }, 
     data: {
-      text: '',
       label1Value: initialData.label1Value || 'Change',
       label2Value: initialData.label2Value || 'Change',
       input1Value: initialData.input1Value || '',

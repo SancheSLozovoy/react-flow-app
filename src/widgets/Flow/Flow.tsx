@@ -47,19 +47,49 @@ export default function Flow() {
     };
 
     const handleAddPreProcess = () => {
-        addPreProcess(nodes, setNodes, nodeId); 
+        addPreProcess(nodes, setNodes, nodeId, updateNodeData); 
         setNodeId(nodeId + 1);
     };
 
     const handleSend = () => {
-        const processedData = nodes.map(node => ({
-            id: node.id,
-            ...node.data,
-        }));
+        const processNodes = nodes.filter(node => node.type === 'textUpdater');
+        console.log(edges)
+        console.log(nodes)
+        const groupedData = processNodes.map(processNode => {
+            const connectedPreProcesses = edges
+                .filter(edge => edge.source === processNode.id)
+                .map(edge => {
+                    const targetNode = nodes.find(node => node.id === edge.target);
+                    return targetNode ? { id: targetNode.id, data: targetNode.data } : null;
+                })
+    
+            return {
+                process: {
+                    id: processNode.id,
+                    data: processNode.data,
+                },
+                preProcesses: connectedPreProcesses,
+            };
+        });
+    
+        console.log(groupedData)
 
-
-        alert(JSON.stringify(processedData, null, 2));
+        fetch('http://localhost:5173/', { 
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json',
+            },
+            body: JSON.stringify(groupedData),
+        })
+        .then(response => response.json())
+        .then(data => {
+            console.log('Success:', data);
+        })
+        .catch((error) => {
+            console.error('Error:', error);
+        });
     };
+    
 
     return (
         <div style={{ width: '100vw', height: '100vh' }}>
