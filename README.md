@@ -1,54 +1,43 @@
-![](https://github.com/xyflow/web/blob/main/assets/codesandbox-header-ts.png?raw=true)
+**Инструкция по развороту**
 
-# React Flow starter (Vite + TS)
+### Шаг 1: Установка инструментов
 
-We've put together this template to serve as a starting point for folks
-interested in React Flow. You can use this both as a base for your own React
-Flow applications, or for small experiments or bug reports.
+- **Node.js** (версия 14 или выше) — [Скачать Node.js](https://nodejs.org/)
+- **npm** (входит в комплект Node.js) или **yarn**
 
-**TypeScript not your thing?** We also have a vanilla JavaScript starter template,
-just for you!
+### Шаг 2: Клонирование репозитория
 
-## Getting up and running
-
-You can get this template without forking/cloning the repo using `degit`:
+Клонируйте ваш проект из репозитория (если он находится на GitHub или другом хостинге):
 
 ```bash
-npx degit xyflow/vite-react-flow-template your-app-name
+git clone https://github.com/SancheSLozovoy/react-flow-app.git
+cd path/react-flow-app
 ```
 
-The template contains mostly the minimum dependencies to get up and running, but
-also includes eslint and some additional rules to help you write React code that
-is less likely to run into issues:
+### Шаг 3: Установка зависимостей
+
+Если вы используете npm:
 
 ```bash
-npm install # or `pnpm install` or `yarn install`
+npm install
 ```
 
-Vite is a great development server and build tool that we recommend our users to
-use. You can start a development server with:
+Если вы используете yarn:
+
+```bash
+yarn install
+```
+
+### Шаг 4: Запуск приложения
+
+Если вы используете npm:
 
 ```bash
 npm run dev
 ```
 
-While the development server is running, changes you make to the code will be
-automatically reflected in the browser!
+Если вы используете yarn:
 
-## Things to try:
-
-- Create a new custom node inside `src/nodes/` (don't forget to export it from `src/nodes/index.ts`).
-- Change how things look by [overriding some of the built-in classes](https://reactflow.dev/learn/customization/theming#overriding-built-in-classes).
-- Add a layouting library to [position your nodes automatically](https://reactflow.dev/learn/layouting/layouting)
-
-## Resources
-
-Links:
-
-- [React Flow - Docs](https://reactflow.dev)
-- [React Flow - Discord](https://discord.com/invite/Bqt6xrs)
-
-Learn:
-
-- [React Flow – Custom Nodes](https://reactflow.dev/learn/customization/custom-nodes)
-- [React Flow – Layouting](https://reactflow.dev/learn/layouting/layouting)
+```bash
+yarn run dev
+```
