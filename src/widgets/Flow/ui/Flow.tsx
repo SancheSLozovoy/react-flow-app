@@ -65,11 +65,10 @@ export default function Flow() {
                 onNodesChange={onNodesChange}
                 onEdgesChange={onEdgesChange}
                 onConnect={onConnect}
-                fitView
                 nodeTypes={nodeTypes}
             >
                 <Controls />
-                <Background gap={12} size={1} />
+                <Background bgColor='#e6f7ff' gap={12} size={1} />
                 <MiniMap />
                 <Panel position="top-right" className="panel">
                     <button className="button" onClick={handleAddProcess}>Добавить процесс</button>
