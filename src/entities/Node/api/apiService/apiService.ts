@@ -4,6 +4,7 @@ import { linkNodes } from "../../../../widgets/Flow/lib/linkNodes/linkNodes";
 
 export const postNodes = async ( nodes: Node[], edges: Edge[]) => {
     const data = linkNodes(nodes, edges); 
+    console.log(JSON.stringify(data))
     try {
         const response = await fetch(BASE_URL, {
           method: "POST",

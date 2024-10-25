@@ -6,13 +6,13 @@ import '../../PreProcess/ui/PreProcess.css';
 const Process: React.FC<ProcessNodeProps> = ({ data, id, isConnectable }) => {
   const inputRef1 = useRef<HTMLInputElement>(null);
   const inputRef2 = useRef<HTMLInputElement>(null);
-  const labelRef1 = useRef<HTMLLabelElement>(null);
-  const labelRef2 = useRef<HTMLLabelElement>(null);
-
   const [input1Value, setInput1Value] = useState(data.input1Value || '');
   const [input2Value, setInput2Value] = useState(data.input2Value || '');
   const [label1Value, setLabel1Value] = useState(data.label1Value || 'Change');
   const [label2Value, setLabel2Value] = useState(data.label2Value || 'Change');
+
+  // Состояние для отслеживания редактируемого label
+  const [editingLabel, setEditingLabel] = useState<'label1' | 'label2' | null>(null);
 
   useEffect(() => {
     data.updateNodeData(id, {
@@ -30,18 +30,37 @@ const Process: React.FC<ProcessNodeProps> = ({ data, id, isConnectable }) => {
     setLabel2Value(data.label2Value || 'Change');
   }, [data]);
 
+
+  const handleLabelBlur = (label: 'label1' | 'label2', value: string) => {
+    if (label === 'label1') {
+      setLabel1Value(value);
+    } else if (label === 'label2') {
+      setLabel2Value(value);
+    }
+    setEditingLabel(null);
+  };
+
   return (
     <div className="text-updater-node">
       <div className="text-updeter-inner">
-        <label
-          className='label'
-          ref={labelRef1}
-          contentEditable="true"
-          suppressContentEditableWarning={true}
-          onBlur={() => setLabel1Value(labelRef1.current?.textContent || 'Change')}
-        >
-          {label1Value}
-        </label>
+        {editingLabel === 'label1' ? (
+          <input
+            ref={inputRef1}
+            value={label1Value}
+            onChange={(e) => setLabel1Value(e.target.value)}
+            onBlur={() => handleLabelBlur('label1', label1Value)}
+            onFocus={() => setLabel1Value(label1Value)}
+            className="nodrag"
+            autoFocus
+          />
+        ) : (
+          <label
+            className='label'
+            onClick={() => setEditingLabel('label1')}
+          >
+            {label1Value}
+          </label>
+        )}
         <input
           ref={inputRef1}
           name="input1"
@@ -49,15 +68,25 @@ const Process: React.FC<ProcessNodeProps> = ({ data, id, isConnectable }) => {
           onChange={(e) => setInput1Value(e.target.value)}
           className="nodrag"
         />
-        <label
-          className='label'
-          ref={labelRef2}
-          contentEditable="true"
-          suppressContentEditableWarning={true}
-          onBlur={() => setLabel2Value(labelRef2.current?.textContent || 'Change')}
-        >
-          {label2Value}
-        </label>
+
+        {editingLabel === 'label2' ? (
+          <input
+            ref={inputRef2}
+            value={label2Value}
+            onChange={(e) => setLabel2Value(e.target.value)}
+            onBlur={() => handleLabelBlur('label2', label2Value)}
+            onFocus={() => setLabel2Value(label2Value)}
+            className="nodrag"
+            autoFocus
+          />
+        ) : (
+          <label
+            className='label'
+            onClick={() => setEditingLabel('label2')}
+          >
+            {label2Value}
+          </label>
+        )}
         <input
           ref={inputRef2}
           name="input2"
