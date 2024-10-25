@@ -47,6 +47,7 @@ const Process: React.FC<ProcessNodeProps> = ({ data, id, isConnectable }) => {
           name="input1"
           value={input1Value}
           onChange={(e) => setInput1Value(e.target.value)}
+          className="nodrag"
         />
         <label
           className='label'
@@ -62,6 +63,7 @@ const Process: React.FC<ProcessNodeProps> = ({ data, id, isConnectable }) => {
           name="input2"
           value={input2Value}
           onChange={(e) => setInput2Value(e.target.value)}
+          className="nodrag"
         />
       </div>
       <Handle className='handle' type="source" position={Position.Bottom} isConnectable={isConnectable} />
