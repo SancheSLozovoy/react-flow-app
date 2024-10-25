@@ -11,7 +11,6 @@ const Process: React.FC<ProcessNodeProps> = ({ data, id, isConnectable }) => {
   const [label1Value, setLabel1Value] = useState(data.label1Value || 'Change');
   const [label2Value, setLabel2Value] = useState(data.label2Value || 'Change');
 
-  // Состояние для отслеживания редактируемого label
   const [editingLabel, setEditingLabel] = useState<'label1' | 'label2' | null>(null);
 
   useEffect(() => {
