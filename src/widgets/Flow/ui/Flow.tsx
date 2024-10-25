@@ -17,7 +17,7 @@ import { addNode } from '../../../features/addNode/addNode';
 import Process from '../../../entities/Process/ui/Process';
 import PreProcess from '../../../entities/PreProcess/ui/PreProcess';
 import { linkNodes } from '../lib/linkNodes/linkNodes';
-import { sendPostRequest } from '../api/apiService/apiService';
+import { sendPostRequest } from '../../../entities/Node/api/apiService/apiService';
 import './Flow.css';
 
 const initialNodes: Node[] = [];
