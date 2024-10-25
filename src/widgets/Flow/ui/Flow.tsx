@@ -13,10 +13,9 @@ import {
     Node,
 } from '@xyflow/react';
 import '@xyflow/react/dist/style.css';
-import { addProcess } from '../../../features/addProcess/addProcess';
+import { addNode } from '../../../features/addNode/addNode';
 import Process from '../../../entities/Process/ui/Process';
 import PreProcess from '../../../entities/PreProcess/ui/PreProcess';
-import { addPreProcess } from '../../../features/addPreProcess/addPreProcess';
 import { linkNodes } from '../lib/linkNodes/linkNodes';
 import { sendPostRequest } from '../api/apiService/apiService';
 import './Flow.css';
@@ -42,13 +41,8 @@ export default function Flow() {
         setNodes((nds) => nds.map((node) => (node.id === id ? { ...node, data: { ...node.data, ...newData } } : node)));
     };
 
-    const handleAddProcess = () => {
-        addProcess(nodes, setNodes, nodeId, updateNodeData);
-        setNodeId(nodeId + 1);
-    };
-
-    const handleAddPreProcess = () => {
-        addPreProcess(nodes, setNodes, nodeId, updateNodeData); 
+    const handleAddNode = (nodeType: 'process' | 'preProcess', initialData: Record<string, any> = {}) => {
+        addNode(nodeType, nodes, setNodes, nodeId, updateNodeData, initialData);
         setNodeId(nodeId + 1);
     };
 
@@ -71,9 +65,15 @@ export default function Flow() {
                 <Background bgColor='#e6f7ff' gap={12} size={1} />
                 <MiniMap />
                 <Panel position="top-right" className="panel">
-                    <button className="button" onClick={handleAddProcess}>Добавить процесс</button>
-                    <button className="button" onClick={handleAddPreProcess}>Добавить PreProcess 1</button>
-                    <button className="button" onClick={handleAddPreProcess}>Добавить PreProcess 2</button>
+                    <button className="button" onClick={() => handleAddNode('process', { label1Value: 'Process' })}>
+                        Добавить процесс
+                    </button>
+                    <button className="button" onClick={() => handleAddNode('preProcess', { label1Value: 'PreProcess 1' })}>
+                        Добавить PreProcess 1
+                    </button>
+                    <button className="button" onClick={() => handleAddNode('preProcess', { label1Value: 'PreProcess 2' })}>
+                        Добавить PreProcess 2
+                    </button>
                 </Panel>
                 <Panel position='bottom-right' className="panel">
                     <button className="button" onClick={handleSend}>Отправить</button>
