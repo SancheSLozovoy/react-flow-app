@@ -17,7 +17,7 @@ import { addNode } from '../../../features/addNode/addNode';
 import Process from '../../../entities/Process/ui/Process';
 import PreProcess from '../../../entities/PreProcess/ui/PreProcess';
 import { linkNodes } from '../lib/linkNodes/linkNodes';
-import { sendPostRequest } from '../../../entities/Node/api/apiService/apiService';
+import { postNodes } from '../../../entities/Node/api/apiService/apiService';
 import './Flow.css';
 
 const initialNodes: Node[] = [];
@@ -47,10 +47,10 @@ export default function Flow() {
     };
 
     const handleSend = async () => {
-        const linkedData = linkNodes(nodes, edges);
-        await sendPostRequest(linkedData);
-    };
+        const { nodes: filteredNodes, edges: filteredEdges } = linkNodes(nodes, edges);
 
+        await postNodes(filteredNodes, filteredEdges);
+    };
     return (
         <div style={{ width: '100vw', height: '100vh' }}>
             <ReactFlow

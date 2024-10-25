@@ -1,24 +1,17 @@
 import { Node, Edge } from '@xyflow/react';
 
 export const linkNodes = (nodes: Node[], edges: Edge[]) => {
-    const processNodes = nodes.filter(node => node.type === 'textUpdater');
+    const connectedNodeIds = new Set<string>();
 
-    const groupedData = processNodes.map(processNode => {
-        const connectedPreProcesses = edges
-            .filter(edge => edge.source === processNode.id)
-            .map(edge => {
-                const targetNode = nodes.find(node => node.id === edge.target);
-                return targetNode ? { id: targetNode.id, data: targetNode.data } : null;
-            });
-
-        return {
-            process: {
-                id: processNode.id,
-                data: processNode.data,
-            },
-            preProcesses: connectedPreProcesses.filter(item => item !== null),
-        };
+    edges.forEach(edge => {
+        connectedNodeIds.add(edge.source);
+        connectedNodeIds.add(edge.target);
     });
-    console.log(groupedData)
-    return groupedData;
+
+    const filteredNodes = nodes.filter(node => connectedNodeIds.has(node.id));
+    const filteredEdges = edges.filter(edge => 
+        connectedNodeIds.has(edge.source) && connectedNodeIds.has(edge.target)
+    );
+
+    return { nodes: filteredNodes, edges: filteredEdges };
 };
