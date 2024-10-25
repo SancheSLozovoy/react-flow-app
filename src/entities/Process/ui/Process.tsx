@@ -1,6 +1,6 @@
 import React, { useEffect, useRef, useState } from 'react';
 import { Handle, Position } from '@xyflow/react';
-import { ProcessNodeProps } from '../model/types';
+import { ProcessNodeProps } from '../model/types/';
 import '../../PreProcess/ui/PreProcess.css';
 
 const Process: React.FC<ProcessNodeProps> = ({ data, id, isConnectable }) => {
